@@ -1,0 +1,188 @@
+body
+{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    user-select: none;
+    overflow: hidden;
+}
+.back i
+{
+    font-size: 50px;
+    color: rgba(23, 47, 36, 0.833);
+    cursor: pointer;
+    transition:0.3s;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+.back i:hover
+{
+    font-size: 50px;
+    color: black;
+}
+.container 
+{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+.container .nav
+{
+    width: 100%;
+    height: 10%;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    background-color: rgba(23, 47, 36, 0.833);
+}
+.container .nav .logo
+{
+    width: 10%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+.container .nav .logo img
+{
+    width: 150px;
+    height: 150px;
+}
+.container .nav .choices
+{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    margin-left: 50px;
+}
+.container .nav .choices ul 
+{
+    width: 100%;
+    list-style: none;
+    margin-left: 70px;
+}
+.container .nav .choices ul li
+{
+    font-size: 22px;
+    display: inline;
+    margin: 0 26px;
+}
+.container .nav .choices ul li a
+{
+    color: white;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.container .nav .choices ul li a:hover
+{
+    color: black;
+    box-shadow: 0 2px 0 black;
+}
+
+.screen {
+    width: 100%;
+    height: 90%;
+    padding: 20px;
+    background-color: #f1fbff;
+    overflow-y: auto;
+}
+
+.paper-header {
+    margin-bottom: 20px;
+    font-weight: bold;
+    color: rgba(23, 47, 36, 0.833);
+}
+
+.paper-header h2 {
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+.paper-header p {
+    font-size: 20px;
+    margin: 5px 0;
+}
+
+.paper-body {
+    width: 100%;
+}
+
+.question {
+    margin-bottom: 20px;
+}
+
+.question p {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.options {
+    margin-left: 20px;
+}
+
+.options label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.options input {
+    margin-right: 10px;
+}
+.hov
+{
+    cursor: pointer;
+    font-size: 18px;
+    transition: 0.3s;
+}
+.hov:hover
+{
+    color: red;
+}
+.buttons {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.submit,
+.cancel {
+    padding: 10px 20px;
+    font-size: 18px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+}
+.submit 
+{
+    background-color: rgba(23, 47, 36, 0.833);
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.cancel 
+{
+    background-color: #c0392b;
+    color: white;
+    cursor: pointer;
+    transition: 0.3;
+}
+
+.submit:hover
+{
+    opacity: 0.8;
+    background-color:white;
+    color: black;
+    box-shadow: 0 0 10px rgba(23, 47, 36, 0.833);
+}
+.cancel:hover 
+{
+    opacity: 0.8;
+    background-color:white;
+    color: black;
+    box-shadow: 0 0 10px rgba(23, 47, 36, 0.833);
+}

@@ -1,0 +1,469 @@
+CREATE DEFINER=`root`@`localhost` PROCEDURE `AddAssignment`(IN p_content VARCHAR(255), IN p_level VARCHAR(255), IN p_subject VARCHAR(255))
+BEGIN
+    INSERT INTO assignment (content, level, subject) VALUES (p_content, p_level, p_subject);
+END
+
+==============================================================
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `AddChoicesToQuestion`(
+    IN p_Qid INT,
+    IN p_ChoiceContent VARCHAR(255),
+    IN p_Status TINYINT
+)
+BEGIN
+    INSERT INTO choices (Qid, content, status) VALUES (p_Qid, p_ChoiceContent, p_Status);
+END
+
+==============================================================
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `AddNewExam`(
+    IN p_Tid INT,
+    IN p_Name VARCHAR(255),
+    IN p_Type VARCHAR(50),
+    IN p_StartTime DATETIME,
+    IN p_EndTime DATETIME,
+    IN p_TotalGrade INT,
+    IN P_yearlevel INT
+    )
+BEGIN
+  DECLARE v_eid INT;
+  SET v_eid = IFNULL((SELECT MAX(Eid) FROM exam), 0) + 1;
+  
+  INSERT INTO exam (Eid,Tid, name, Type, StartTime, EndTime, conducted, TotalGrade,year_level)
+  VALUES (v_eid, p_Tid, p_Name, p_Type, p_StartTime, p_EndTime, 0, p_TotalGrade,P_yearlevel);
+  
+  SELECT v_eid AS new_exam_id;
+
+END
+
+===============================================================
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `AddNewStudent`(
+    IN p_email VARCHAR(255),
+    IN p_phone_number VARCHAR(15),
+    IN p_name VARCHAR(255),
+    IN p_level INT
+)
+BEGIN
+    DECLARE v_sid INT;
+
+    SET v_sid = IFNULL((SELECT MAX(Sid) FROM student), 0) + 1;
+
+    INSERT INTO student (Sid,email, password, phone_number,name,level)
+    VALUES (v_sid, p_email, '123456789', p_phone_number,p_name, p_level);
+
+    SELECT v_sid AS new_student_id;
+
+END
+
+=============================================================
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `AddNewTeacher`(
+    IN p_name VARCHAR(255),
+    IN p_email VARCHAR(255),
+    IN p_password VARCHAR(255),
+    IN p_phone_number VARCHAR(15),
+    IN p_salary DECIMAL(10, 2)
+)
+BEGIN
+    DECLARE v_tid INT;
+
+    SET v_tid = IFNULL((SELECT MAX(Tid) FROM teacher), 0) + 1;
+
+    INSERT INTO teacher (Tid, name, email, password, phone_number, salary)
+    VALUES (v_tid, p_name, p_email, p_password, p_phone_number, p_salary);
+
+    SELECT v_tid AS new_teacher_id;
+
+END
+
+=========================================================
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `AddQuestionsToExam`(
+    IN p_Eid INT,
+    IN p_Content VARCHAR(255),
+    IN p_Qgrade INT
+)
+BEGIN
+  DECLARE v_Qid INT;
+  SET v_Qid = IFNULL((SELECT MAX(Qid) FROM questions), 0) + 1;
+  
+  INSERT INTO questions (Qid,Eid, content, Qgrade)
+  VALUES (v_Qid,p_Eid, p_Content, p_Qgrade);
+    
+  SELECT v_Qid AS new_questions_id;
+
+END
+
+==========================================================
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `ChangeMyPassword`(IN studId INT, IN existPassword VARCHAR(255),IN newPassword VARCHAR(255))
+BEGIN
+  UPDATE student
+    SET password = newPassword
+    WHERE Sid = studId and password=existPassword;
+END
+
+==============================================================
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `DeleteAssignment`(    IN p_AssignmentId INT
+)
+BEGIN
+   DELETE FROM assignment
+    WHERE Aid = p_AssignmentId;
+END
+
+========================================================
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `DeleteChoicesForQuestion`(IN p_chid INT)
+BEGIN
+    DELETE FROM choices WHERE Chid = p_chid LIMIT 4;
+
+END
+
+===========================================================
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `DeleteExamDetails`(IN exam_id INT)
+BEGIN
+   DECLARE exam_exists INT;
+
+    -- Check if the exam with the given ID exists
+    SELECT COUNT(*) INTO exam_exists FROM exam WHERE Eid = exam_id;
+
+    -- If the exam exists, delete its details
+    IF exam_exists > 0 THEN
+        DELETE FROM exam WHERE Eid = exam_id;
+
+        SELECT 'Exam details deleted successfully' AS Result;
+    ELSE
+        SELECT 'Exam not found' AS Result;
+    END IF;
+END
+
+=========================================================
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `DeleteQuestionsForExam`(IN p_qid INT)
+BEGIN
+    DELETE FROM questions WHERE Qid = p_qid;
+END
+
+=========================================================
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `DeleteStudent`(    IN p_Sid INT
+)
+BEGIN
+  DELETE FROM student
+    WHERE Sid = p_Sid;
+END
+
+=======================================================
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `DeleteTeacher`(    IN p_tid INT
+)
+BEGIN
+    -- Check if the teacher with the given ID exists
+    IF EXISTS (SELECT 1 FROM teacher WHERE Tid = p_tid) THEN
+        -- Delete the teacher from the table
+        DELETE FROM teacher WHERE Tid = p_tid;
+
+        SELECT 'Teacher deleted successfully' AS result;
+    ELSE
+        SELECT 'Teacher with ID ' || p_tid || ' does not exist' AS result;
+    END IF;
+END
+
+===========================================================
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `EditAssignment`(
+    IN p_AssignmentId INT,
+    IN p_NewContent VARCHAR(255),
+    IN p_NewLevel VARCHAR(255),
+    IN p_NewSubject VARCHAR(255))
+BEGIN
+  UPDATE assignment
+    SET
+        content = p_NewContent,
+        level = p_NewLevel,
+        subject = p_NewSubject
+    WHERE Aid = p_AssignmentId;
+
+END
+
+===============================================================
+
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `EditChoicesForQuestion`(   IN P_Chid INT,
+    IN p_ChoiceContent VARCHAR(255),
+    IN p_Status TINYINT)
+BEGIN
+    UPDATE choices
+    SET
+        content = p_ChoiceContent,
+        status = p_Status
+        WHERE(Chid = P_Chid);
+END
+
+================================================================
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `EditExam`( IN p_Eid INT,
+    IN p_StartTime DATETIME,
+    IN p_EndTime DATETIME,
+    IN p_Conducted TINYINT,
+    IN p_TotalGrade INT,
+    IN p_yearlevel INT)
+BEGIN
+ UPDATE exam
+    SET
+        StartTime = p_StartTime,
+        EndTime = p_EndTime,
+        conducted = p_Conducted,
+        TotalGrade = p_TotalGrade,
+        year_level=p_yearlevel
+    WHERE Eid = p_Eid;
+END
+
+================================================================
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `EditQuestion`( IN p_Qid INT,
+    IN p_Content VARCHAR(255),
+    IN p_Qgrade INT)
+BEGIN
+  UPDATE questions
+    SET
+        content = p_Content,
+        Qgrade = p_Qgrade
+    WHERE Qid = p_Qid;
+END
+
+================================================================
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `EditStudent`(
+    IN p_Sid INT,
+    IN p_newEmail VARCHAR(255),
+    IN p_newPassword VARCHAR(255),
+    IN p_newPhoneNumber VARCHAR(20),
+    IN p_newName VARCHAR(100),
+    IN p_newLevel INT
+)
+BEGIN
+  UPDATE student
+    SET
+        email = p_newEmail,
+        password = p_newPassword,
+        phone_number = p_newPhoneNumber,
+        name = p_newName,
+        level = p_newLevel
+    WHERE Sid = p_Sid;
+END
+
+========================================================
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `EditTeacher`(
+    IN p_tid INT,
+    IN p_name VARCHAR(255),
+    IN p_email VARCHAR(255),
+    IN p_password VARCHAR(255),
+    IN p_phone_number VARCHAR(15),
+    IN p_salary DECIMAL(10, 2)
+)
+BEGIN
+    -- Check if the teacher with the given ID exists
+    IF EXISTS (SELECT 1 FROM teacher WHERE Tid = p_tid) THEN
+        -- Update the teacher's information
+        UPDATE teacher
+        SET
+            name = p_name,
+            email = p_email,
+            password = p_password,
+            phone_number = p_phone_number,
+            salary = p_salary
+        WHERE Tid = p_tid;
+
+        SELECT 'Teacher information updated successfully' AS result;
+    ELSE
+        SELECT 'Teacher with ID ' || p_tid || ' does not exist' AS result;
+    END IF;
+
+END
+
+=========================================================
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `GetChoicesForQuestionInExam`( IN p_QuestionId INT,
+    IN p_ExamId INT)
+BEGIN
+ SELECT Chid, content
+    FROM choices
+    WHERE Qid = p_QuestionId AND
+          Qid IN (SELECT Qid FROM questions WHERE Qid = p_QuestionId AND Eid = p_ExamId)
+    LIMIT 4;
+END
+
+=======================================================
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `GetConductedExams`()
+BEGIN
+SELECT *
+    FROM exam
+    WHERE conducted = 1;
+
+END
+
+===================================================
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `GetExamInf`(IN p_ExamId INT, IN p_YearLevel INT)
+BEGIN
+ SELECT name,Type,StartTime,EndTime,TotalGrade, year_level
+    FROM exam
+    WHERE Eid = p_ExamId AND year_level = p_YearLevel;
+END
+
+=====================================================
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `GetQuestionsForExam`(IN p_ExamId INT)
+BEGIN
+ SELECT Qid, content, Qgrade
+    FROM questions
+    WHERE Eid = p_ExamId;
+END
+
+==========================================================
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `GetStudentGradesForStudent`(IN studentIDParam INT)
+BEGIN
+
+    SELECT
+        student.Sid AS StudentID,
+        student.level AS StudentLevel,
+        exam.name AS Exam_Name,
+        student_grades.Grade as Exam_Grade
+    FROM
+        student
+    JOIN
+        student_grades ON student.Sid = student_grades.Sid
+    JOIN
+        exam ON student_grades.Eid = exam.Eid
+    WHERE
+        student.Sid = studentIDParam;
+
+END
+
+=========================================================
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `GetStudentReport`(IN studentId INT)
+BEGIN
+   SELECT e.name AS name, e.StartTime, sg.Grade
+    FROM student_grades sg
+    JOIN exam e ON sg.Eid = e.Eid
+    WHERE sg.Sid = studentId;
+END
+
+==========================================================
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `GetStudentsDetails`()
+BEGIN
+ SELECT *
+    FROM student;
+END
+
+========================================================
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `GetSubjectAndStudentGrades`(IN p_ExamId INT)
+BEGIN
+    DECLARE v_SubjectName VARCHAR(255);
+
+    -- Get the subject name
+    SELECT name INTO v_SubjectName
+    FROM subject
+    WHERE subject_Tid = (SELECT Tid FROM exam WHERE Eid = p_ExamId);
+
+    -- Get the names and grades of students who took the subject in the specified exam
+    SELECT student.name AS student_name , student_grades.Grade
+    FROM student 
+    INNER JOIN student_grades ON student.Sid = student_grades.Sid
+    WHERE student_grades.Eid = p_ExamId;
+    
+END
+
+==========================================================
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `GetTeachersDetails`()
+BEGIN
+  SELECT *
+    FROM teacher;
+
+END
+
+======================================================
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `InsertIntoScheduleFromExam`()
+BEGIN
+    -- Declare variables to store retrieved values
+    DECLARE v_Eid INT;
+    DECLARE v_examname VARCHAR(255);
+    DECLARE v_type VARCHAR(255);
+    DECLARE v_starttime DATETIME;
+    DECLARE v_endtime DATETIME;
+    DECLARE v_totalgrade INT;
+    DECLARE v_level VARCHAR(50);
+
+    -- Variable to indicate cursor status
+    DECLARE exam_cursor_finished BOOLEAN DEFAULT FALSE;
+
+    -- Cursor to iterate over rows in the exam table
+    DECLARE exam_cursor CURSOR FOR
+        SELECT Eid, name, Type, StartTime, EndTime, TotalGrade, year_level
+        FROM exam;
+
+    -- Declare continue handler for the cursor
+    DECLARE CONTINUE HANDLER FOR NOT FOUND
+        SET exam_cursor_finished = TRUE;
+
+    OPEN exam_cursor;
+
+    -- Start fetching and inserting data into the schedule table
+    exam_insert_loop: LOOP
+        FETCH exam_cursor INTO v_Eid, v_examname, v_type, v_starttime, v_endtime, v_totalgrade, v_level;
+
+        IF exam_cursor_finished THEN
+            LEAVE exam_insert_loop;
+        END IF;
+
+        -- Insert data into the schedule table with IGNORE option
+        INSERT IGNORE INTO schedule (Eid, name, Type, StartTime, EndTime, TotalGrade, year_level)
+        VALUES (v_Eid, v_examname, v_type, v_starttime, v_endtime, v_totalgrade, v_level);
+    END LOOP;
+
+    CLOSE exam_cursor;
+END
+
+==================================================
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `SendNoteToPrinciple`(  IN p_noteContent VARCHAR(255),
+    IN p_principleId INT,
+    IN p_studentId INT)
+BEGIN
+   DECLARE principleExists INT;
+    DECLARE studentExists INT;
+
+    -- Check if the principle and student exist
+    SELECT COUNT(*) INTO principleExists FROM principle WHERE Pid = p_principleId;
+    SELECT COUNT(*) INTO studentExists FROM student WHERE Sid = p_studentId;
+
+    -- If both principle and student exist, insert the note
+    IF principleExists = 1 AND studentExists = 1 THEN
+        INSERT INTO note (content, pid, sid) VALUES (p_noteContent, p_principleId, p_studentId);
+        SELECT 'Note sent successfully.' AS result;
+    ELSE
+        SELECT 'Invalid principle or student ID.' AS result;
+    END IF;
+END
+
+=======================================================
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `UpdateExamState`(IN examId INT, IN newConducted tinyint)
+BEGIN
+ UPDATE exam
+    SET conducted = newConducted
+    WHERE Eid = examId;
+END
+

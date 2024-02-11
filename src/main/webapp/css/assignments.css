@@ -1,0 +1,150 @@
+body
+{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    user-select: none;
+    overflow: hidden;
+}
+.back i
+{
+    font-size: 50px;
+    color: rgba(23, 47, 36, 0.833);
+    cursor: pointer;
+    transition:0.3s;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+.back i:hover
+{
+    font-size: 50px;
+    color: black;
+}
+.container 
+{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+.container .nav
+{
+    width: 100%;
+    height: 10%;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    background-color: rgba(23, 47, 36, 0.833);
+}
+.container .nav .logo
+{
+    width: 10%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+.container .nav .logo img
+{
+    width: 150px;
+    height: 150px;
+}
+.container .nav .choices
+{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    margin-left: 50px;
+}
+.container .nav .choices ul 
+{
+    width: 100%;
+    list-style: none;
+    margin-left: 70px;
+}
+.container .nav .choices ul li
+{
+    font-size: 22px;
+    display: inline;
+    margin: 0 26px;
+}
+.container .nav .choices ul li a
+{
+    color: white;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.container .nav .choices ul li a:hover
+{
+    color: black;
+    box-shadow: 0 2px 0 black;
+}
+.container .screen
+{
+    width: 100%;
+    height: 90%;
+    background-color: #f1fbff;
+}
+.assig 
+{
+    padding: 20px;
+}
+.assignment-form 
+{
+    max-width: 400px;
+    height: 520px;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #f1fbff;
+    margin-top: -30px;
+}
+.assignment-form h2 
+{
+    font-size: 30px;
+    font-weight: bold;
+    color: rgba(23, 47, 36, 0.833);
+    margin-bottom: 20px;
+    text-align: center;
+}
+.assignment-form label 
+{
+    display: block;
+    margin-bottom: 8px;
+}
+.assignment-form input,
+.assignment-form textarea 
+{
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    font-size: 17px;
+}
+.assignment-form .txtar
+{
+    height: 200px;
+}
+.assignment-form button 
+{
+    background-color: rgba(23, 47, 36, 0.833);
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    width: 100%;
+    font-weight: bold;
+    font-size: 17px;
+    transition: 0.3s;
+}
+.assignment-form button:hover 
+{
+    background-color: rgba(255, 255, 255, 0.105);
+    color: rgba(23, 47, 36, 0.833);
+    box-shadow: 0 0 10px rgba(23, 47, 36, 0.833);
+}

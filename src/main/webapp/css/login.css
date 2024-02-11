@@ -1,0 +1,93 @@
+body
+{
+    width: 99%;
+    height: 97.7vh;
+    background-image: linear-gradient(rgba(137, 137, 139, 0.8),rgba(0,0,50,0.8)),url(../img/logbgg.jpg);
+    background-size: cover;
+}
+.back i
+{
+    font-size: 50px;
+    color: white;
+    cursor: pointer;
+    transition:0.3s;
+}
+.back i:hover
+{
+    font-size: 50px;
+    color: black;
+}
+.container
+{
+    width: 50%;
+    max-width: 250px;
+    height: 45%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    border: 3px solid rgba(255, 255, 255, 0.5);
+    padding: 50px 60px 70px;
+    text-align: center;
+    border-radius: 20px;
+}
+.container h1
+{
+    margin-top: 0;
+    font-size: 45px;
+    margin-bottom: 25px;
+    color: aliceblue;
+}
+.input-field
+{
+    background-color: #eaeaea;
+    margin: 15px 0px;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+}
+.input-field input
+{
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    padding: 18px 15px;
+}
+.input-field i
+{
+    margin-left: 15px;
+    color:#999;
+}
+.radio-field
+{
+    margin-bottom: 25px;
+}
+.radio-field label
+{
+    color: aliceblue;
+}
+.radio-field input
+{
+    cursor: pointer;
+}
+.btn
+{
+    width: 65%;
+    height: 6vh;
+    align-items: center;
+    color:#545353;
+    background-color: #eaeaea;
+    border: 1px solid #eaeaea;
+    border-radius: 15px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition:0.3s;
+}
+.btn:hover
+{
+    color:#eaeaea;
+    background-color: #545353;
+    border: 1px solid #545353;
+}

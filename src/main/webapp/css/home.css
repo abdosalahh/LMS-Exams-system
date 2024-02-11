@@ -1,0 +1,194 @@
+body
+{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    user-select: none;
+    overflow: hidden;
+}
+.container 
+{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+.container .nav
+{
+    width: 100%;
+    height: 10%;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    background-color: rgba(23, 47, 36, 0.833);
+}
+.container .nav .logo
+{
+    width: 10%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+.container .nav .logo img
+{
+    width: 150px;
+    height: 150px;
+}
+.container .nav .choices
+{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    margin-left: 50px;
+}
+.container .nav .choices ul 
+{
+    width: 100%;
+    list-style: none;
+}
+.container .nav .choices ul li
+{
+    font-size: 22px;
+    display: inline;
+    margin: 0 26px;
+}
+.container .nav .choices ul li a
+{
+    color: white;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.container .nav .choices ul li a:hover
+{
+    color: black;
+    box-shadow: 0 2px 0 black;
+}
+.container .screen
+{
+    width: 100%;
+    height: 90%;
+    background-image: url(../img/homebg.jpg);
+    background-size: cover;
+}
+.container .screen .scripe
+{
+    width: 35%;
+    height: 50%;
+    margin: auto;
+    margin-top: 5%;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    color: white;
+}
+.container .screen .scripe h1
+{
+    font-size: 60px;
+    margin-bottom: 0;
+}
+.container .screen .scripe p
+{
+    font-size: 25px;
+    font-weight: bold;
+}
+.container .screen .down
+{
+    width: 40%;
+    height: 15%;
+    margin-left: 27%;
+    margin-top: 8%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.container .screen .down .s
+{
+    width: 30%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    border: 2px solid rgba(23, 47, 36, 0.833);
+    border-radius: 25px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.container .screen .down .s:hover
+{
+    background-color: rgba(23, 47, 36, 0.79);
+    color: white;
+}
+.container .screen .down .s .ic
+{
+    width: 30%;
+    height: 80%;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    font-size: 45px;
+    margin-left: 20px;
+}
+.container .screen .down .s .para
+{
+    width: 60%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    margin-bottom: 25px;
+}
+.container .screen .down .s .para h1
+{
+    margin-bottom: 0;
+}
+.container .screen .down .s .para p
+{
+    margin-top: 0;
+    font-size: 20px;
+}
+.container .nav .choices ul li.services-dropdown .dropdown-content 
+{
+    display: none;
+    position: absolute;
+    background-color: rgba(23, 47, 36, 0.833);
+    border-radius: 5px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    width: fit-content; 
+}
+.container .nav .choices ul li.services-dropdown:hover .dropdown-content 
+{
+    margin-left: 210px;
+    width: 190px;
+    display: flex;
+    flex-direction: column;
+}
+.container .nav .choices ul li.services-dropdown .dropdown-content li 
+{
+    display: block;
+    padding: 10px;
+    padding-left: 10px 0;
+    margin-left: 0;
+    margin-right: -10;
+    display: flex;
+    justify-content: center;
+}
+.container .nav .choices ul li.services-dropdown .dropdown-content li a 
+{
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+    transition: 0.3s;
+    text-transform: lowercase;
+}
+.container .nav .choices ul li.services-dropdown .dropdown-content li:hover a 
+{
+    color: black;
+    background-color: white;
+}
+

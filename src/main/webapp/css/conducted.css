@@ -1,0 +1,112 @@
+body
+{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    user-select: none;
+    overflow: hidden;
+}
+.back i
+{
+    font-size: 50px;
+    color: rgba(23, 47, 36, 0.833);
+    cursor: pointer;
+    transition:0.3s;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+.back i:hover
+{
+    font-size: 50px;
+    color: black;
+}
+.container 
+{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+.container .nav
+{
+    width: 100%;
+    height: 10%;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    background-color: rgba(23, 47, 36, 0.833);
+}
+.container .nav .logo
+{
+    width: 10%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+.container .nav .logo img
+{
+    width: 150px;
+    height: 150px;
+}
+.container .nav .choices
+{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    margin-left: 50px;
+}
+.container .nav .choices ul 
+{
+    width: 100%;
+    list-style: none;
+    margin-left: 70px;
+}
+.container .nav .choices ul li
+{
+    font-size: 22px;
+    display: inline;
+    margin: 0 26px;
+}
+.container .nav .choices ul li a
+{
+    color: white;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.container .nav .choices ul li a:hover
+{
+    color: black;
+    box-shadow: 0 2px 0 black;
+}
+.container .screen
+{
+    width: 100%;
+    height: 90%;
+    background-color: #f1fbff;
+}
+.data-table 
+{
+    width: 100%;
+    margin-top: 20px;
+}
+.data-row
+ {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #ccc;
+    padding: 10px 0;
+    font-size: 20px;
+}
+.data-row div 
+{
+    flex: 1;
+    padding: 0 10px;
+}
+.data-row div:first-child 
+{
+    flex: 0.5; 
+}

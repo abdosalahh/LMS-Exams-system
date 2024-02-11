@@ -1,0 +1,179 @@
+body
+{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    user-select: none;
+    overflow: hidden;
+}
+.back i
+{
+    font-size: 50px;
+    color: rgba(23, 47, 36, 0.833);
+    cursor: pointer;
+    transition:0.3s;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+.back i:hover
+{
+    font-size: 50px;
+    color: black;
+}
+.container 
+{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+.container .nav
+{
+    width: 100%;
+    height: 10%;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    background-color: rgba(23, 47, 36, 0.833);
+}
+.container .nav .logo
+{
+    width: 10%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+.container .nav .logo img
+{
+    width: 150px;
+    height: 150px;
+}
+.container .nav .choices
+{
+  width: 50%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  margin-left: 50px;
+}
+.container .nav .choices ul 
+{
+    width: 100%;
+    list-style: none;
+    margin-left: 70px;
+}
+.container .nav .choices ul li
+{
+    font-size: 22px;
+    display: inline;
+    margin: 0 26px;
+}
+.container .nav .choices ul li a
+{
+    color: white;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.container .nav .choices ul li a:hover
+{
+    color: black;
+    box-shadow: 0 2px 0 black;
+}
+.container .screen
+{
+    width: 100%;
+    height: 90%;
+    background-color: #f1fbff;
+}
+.contactForm
+{
+  width: 40%;
+  padding: 40px;
+  background: rgba(0, 0, 0, 0.562);
+  border-radius: 30px; 
+  margin-top: 30px; 
+  position: absolute;
+  top : 50%;
+  left: 50%;
+  transform: translate(-50% , -50%);
+}
+.contactForm h2
+{
+  font-size: 30px;
+  color:  rgb(255, 255, 255);
+  font-weight: 500;  
+}
+.contactForm .inputBox
+{
+  position: relative;
+  width: 100%;
+  margin-top: 10px;
+}
+.contactForm .inputBox input,
+.contactForm .inputBox textarea
+{
+  width: 100%;
+  padding: 5px 0;
+  font-size: 20px;
+  margin: 10px 0;
+  border: none;
+  border-bottom: 2px solid #333;
+  outline: none;
+  resize: none;  
+  border-radius: 15px;
+}
+.contactForm .inputBox .note
+{
+    height: 180px;
+}
+.contactForm .inputBox span
+{
+  position: absolute;
+  left: 5px;
+  padding: 5px 0;
+  font-size: 16px;
+  margin: 10px 0;
+  pointer-events: none;
+  transition: 0.5s;
+  color: black;
+}
+.contactForm .inputBox input:focus ~ span,
+.contactForm .inputBox input:valid ~ span,
+.contactForm .inputBox textarea:focus ~ span,
+.contactForm .inputBox textarea:valid ~ span
+{
+  color:#e91e63;
+  font-size: 12px;
+  transform: translateY(-20px);
+}
+.contactForm .inputBox input[type="sumbit"]
+{
+  width: 100px;
+  background: #00bcd4;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  font-size: 18px;
+}
+input
+{
+background: rgba(255, 255, 255, 0.589);
+border-radius: 30px;
+}
+.send
+{
+  color: white;
+  font-size: 20px;
+  background-color:   rgba(23, 47, 36, 0.833);
+  cursor: pointer;
+  transition: 0.3s;
+}
+.send:hover
+{
+  background-color: rgb(255, 255, 255);
+  color: black;
+}

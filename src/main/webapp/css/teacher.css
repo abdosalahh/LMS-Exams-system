@@ -1,0 +1,204 @@
+body
+{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    user-select: none;
+    overflow: hidden;
+}
+.container 
+{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+.container .nav
+{
+    width: 100%;
+    height: 10%;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    background-color: rgba(23, 47, 36, 0.833);
+}
+.container .nav .logo
+{
+    width: 10%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+.container .nav .logo img
+{
+    width: 150px;
+    height: 150px;
+}
+.container .nav .choices
+{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    margin-left: 50px;
+}
+.container .nav .choices ul 
+{
+    width: 100%;
+    list-style: none;
+    margin-left: 70px;
+}
+.container .nav .choices ul li
+{
+    font-size: 22px;
+    display: inline;
+    margin: 0 26px;
+}
+.container .nav .choices ul li a
+{
+    color: white;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.container .nav .choices ul li a:hover
+{
+    color: black;
+    box-shadow: 0 2px 0 black;
+}
+.container .screen
+{
+    width: 100%;
+    height: 90%;
+    background-color: #f1fbff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+.container .screen .scripe
+{
+    width: fit-content;
+    font-size: 35px;
+    height: 10%;
+    display: flex;
+    align-items: center;
+    color: rgba(23, 47, 36, 0.833);
+}
+.container .screen .down
+{
+    width: 90%;
+    height: 45%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-bottom: 50px;
+}
+.container .screen .down .block
+{
+    width: 20%;
+    height: 100%;
+    background-color: rgba(23, 47, 36, 0.833);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+    border-radius: 40px;
+}
+.container .screen .down .block i
+{
+    font-size: 35px;
+    margin-top: 25px;
+}
+.container .screen .down .block h1
+{
+    font-size: 27px;
+    margin-top: 0;
+}
+.container .screen .down .block p
+{
+    font-size: 15px;
+    margin-top: -20px;
+}
+.container .screen .down .block button
+{
+    width: 130px;
+    height: 35px;
+    font-size: 20px;
+    border-radius: 25px;
+    font-weight: bold;
+    background-color: rgb(61, 255, 126);
+    margin-top: -20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.container .screen .down .block button:hover
+{
+    color: #000000;
+    background-color: #f1fbff;
+}
+.container .screen .down .block .dropdown 
+{
+    position: relative;
+    display: inline-block;
+}
+.container .screen .down .block .dropdown-content 
+{
+    display: none;
+    position: absolute;
+    width: 150px;
+    z-index: 1;
+    margin-left: -10px;
+    background-color: rgba(23, 47, 36, 0.833);
+    border-radius: 5px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    margin-left: -30px;
+}
+.container .screen .down .block .dropdown-content a 
+{
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    font-size: 17px;
+    font-weight: bold;
+}
+.container .screen .down .block .dropdown-content a:hover 
+{
+    color: black;
+    background-color: white;
+}
+.container .screen .down .block .dropdown:hover .dropdown-content 
+{
+    display: block;
+}
+.container .screen .down .block .btn 
+{
+    width: 90px;
+    height: 40px;
+    font-size: 20px;
+    font-weight: bold;
+    background-color: rgb(61, 255, 126);
+    margin-top: -20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    transition: 0.3s;
+    border-radius: 0;
+}
+.container .screen .down .block .btn:hover 
+{
+    color: #000000;
+    background-color: #f1fbff;
+}
+
+.container .screen .down .block .btn i {
+    font-size: 20px;
+    margin: auto;
+}
+
